@@ -1,17 +1,29 @@
-let apple = 15.678;
-let orange = 123.965;
-let pear = 90.2345;
-let summ = apple + orange + pear;
-let discount = (Math.round(Math.random()*100))/100;
+const applePrice = 15.678;
+const orangePrice = 123.965;
+const pearPrice = 90.2345;
+const summ = applePrice + orangePrice + pearPrice;
+const discount = (Math.round(Math.random()*100))/100;
+const money = 500;
+const maxPrice = Math.max(applePrice,orangePrice,pearPrice);
+const minPrice = Math.min(applePrice,orangePrice,pearPrice);
+const minRound = (Math.floor(applePrice)+Math.floor(orangePrice)+Math.floor(pearPrice));
+const roundToHundreds = (Math.round(summ/100)*100);
 
-console.log("Максимальна ціна ", Math.max(apple,orange,pear));
-console.log("Мінімальна ціна ", Math.min(apple,orange,pear));
+const checkParity = minRound % 2;
+const remainder = money - summ;
+const averagePrice = (Math.round(summ/3*100)/100);
+const discountRound = Math.round(discount*100)
+const discountPrice = (Math.round((summ - summ*discount)*100)/100);
+const earnings = Math.round(summ/2-summ*discount)
+
+console.log("Максимальна ціна ", maxPrice);
+console.log("Мінімальна ціна ", minPrice );
 console.log("Вартість всіх товарів ", summ)
-console.log("Округлена в меншу сторону ", (Math.floor(apple)+Math.floor(orange)+Math.floor(pear)))
-console.log("Округлена до сотень ", (Math.round(summ/100)*100));
-console.log("Перевірка на парність ", (Math.floor(apple)+Math.floor(orange)+Math.floor(pear))%2==0);
-console.log("Решта ", (500-summ));
-console.log("Середня ціна ", (Math.round(summ/3*100)/100));
-console.log("Знижка", Math.round(discount*100),"%");
-console.log("Вартість зі знижкою", (Math.round((summ - summ*discount)*100)/100));
-console.log("Чистий прибуток ",Math.round(summ/2-summ*discount));
+console.log("Округлена в меншу сторону ", minRound)
+console.log("Округлена до сотень ", roundToHundreds);
+console.log(`Число є ${checkParity ? 'непарним' : 'парним'}`);
+console.log("Решта ", remainder);
+console.log("Середня ціна ", averagePrice);
+console.log("Знижка", discountRound,"%");
+console.log("Вартість зі знижкою", discountPrice);
+console.log("Чистий прибуток ",earnings);
