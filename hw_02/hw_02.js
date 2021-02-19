@@ -4,13 +4,13 @@ do {
     N = parseInt(prompt(`Введіть число N = `));
 } while(Number.isNaN(N));
 
-console.log('%c%s','font: 2.0em/1 Arial; color: blue;',`Введене число N =  ${N}`);
+console.log('%c%s','font: 2.0em/1 Arial; color: blue;',`Введене число N =  ${N}, ${typeof(N)}`);
 let M;
 do {
     M = parseInt(prompt(`Введіть число M = `));
-} while(Number.isNaN(N));
+} while(Number.isNaN(M));
 
-console.log('%c%s','font: 2.0em/1 Arial; color: gold;',`Введене число M =  ${M}`);
+console.log('%c%s','font: 2.0em/1 Arial; color: gold;',`Введене число M =  ${M}, ${typeof(M)}`);
 
 const trueOrFalse = confirm("Чи потрібно пропускати парні числа")
 if (trueOrFalse) console.log('%c%s','font: 1.5em/1 Arial; color: olivedrab;',"Парні числа пропускаються")
