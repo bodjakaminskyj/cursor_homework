@@ -16,9 +16,16 @@ const trueOrFalse = confirm("Чи потрібно пропускати парн
 if (trueOrFalse) console.log('%c%s','font: 1.5em/1 Arial; color: olivedrab;',"Парні числа пропускаються")
 else console.log('%c%s','font: 1.5em/1 Arial; color: crimson;',"Парні числа не пропускаються")
 let summ = 0;
+if (N<M){   
     for(let i = N; i <= M; i++){
         if (!(trueOrFalse && (i+1)%2)){summ += i; }
     }
+}
+    else {for(let i = M; i <= N; i++){
+        if (!(trueOrFalse && (i+1)%2)){summ += i; }
+    }}
+
+
 console.log('%c%s','font: 2.0em/1 Arial; color: white; background-color: black',`Сума чисел від N до M =  ${summ}`);
 document.writeln("Сума чисел від N до M = ",summ)
 
