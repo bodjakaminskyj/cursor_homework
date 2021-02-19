@@ -1,13 +1,13 @@
 console.log('%c%s', 'font: 2.5em/1 Arial; color: orangered;', 'HW: "Цикли і Розгалуження"')
 let N;
 do {
-    N = Math.ceil(prompt(`Введіть число N = `));
+    N = parseInt(prompt(`Введіть число N = `));
 } while(Number.isNaN(N));
 
 console.log('%c%s','font: 2.0em/1 Arial; color: blue;',`Введене число N =  ${N}`);
 let M;
 do {
-    M = Math.floor(prompt(`Введіть число M = `));
+    M = parseInt(prompt(`Введіть число M = `));
 } while(Number.isNaN(N));
 
 console.log('%c%s','font: 2.0em/1 Arial; color: gold;',`Введене число M =  ${M}`);
