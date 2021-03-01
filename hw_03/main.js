@@ -40,7 +40,7 @@ function countLetter( letter, word ){
   letter = letter.toLowerCase() 
   word = word.toLowerCase()
   for(let i =0; i<word.length; i++){
-    if(word[i]===letter) count++;
+    if(word[i].toLowerCase()===letter.toLowerCase()) count++;
   }
   return count;
 }
