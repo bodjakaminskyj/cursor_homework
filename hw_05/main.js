@@ -6,15 +6,17 @@ function getRandomArray(len = 1, min = 1, max = 1 ){
   return randomArray
 }
 function getAverage(...numbers) {
-  return sum = numbers.reduce((accumulator, curentElrment)=> accumulator + curentElrment,0)/numbers.length
+  const integerNumbers = numbers.filter(number => Number.isInteger(number))
+  return sum = integerNumbers.reduce((accumulator, curentElrment)=> accumulator + curentElrment,0)/integerNumbers.length
 }
 
 function getMedian(...numbers){
-  numbers.sort((firstElement, secondElement)=> firstElement - secondElement)
-if(numbers.length % 2 === 0){
-  median = (numbers[(numbers.length/2)-1] + numbers[numbers.length/2])/2;
+  const integerNumbers = numbers.filter(number => Number.isInteger(number))
+  integerNumbers.sort((firstElement, secondElement)=> firstElement - secondElement)
+if(integerNumbers.length % 2 === 0){
+  median = (integerNumbers[(integerNumbers.length/2)-1] + integerNumbers[integerNumbers.length/2])/2;
 } else {
-  median = numbers[(numbers.length - 1)/2];
+  median = integerNumbers[(integerNumbers.length - 1)/2];
 }
 return median
 }
