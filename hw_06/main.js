@@ -23,18 +23,31 @@ const students = [{
     cosmology: [5, 5, 5, 5]
   }
 }];
-const [student] = students
-//********************************//
+const [,student] = students
+
+
 function getSubjects(){
   let studentSubjects = []
-  studentSubjects = Object.keys(student.subjects)
+  studentSubjects = Object.keys(student.subjects);  
   for (let i = 0; i < studentSubjects.length; i++) {
-    studentSubjects[i] = studentSubjects[i][0].toUpperCase() + studentSubjects[i].slice(1).toLowerCase();  
+    studentSubjects[i] = studentSubjects[i][0].toUpperCase() + studentSubjects[i].slice(1).toLowerCase();
+
+    for (let j = 0; j < studentSubjects[i].length; j++) {
+      
+      if (studentSubjects[i][j]==='_') {
+        studentSubjects[i] = studentSubjects[i].split('_')
+        studentSubjects[i][1] = studentSubjects[i][1][0].toUpperCase() + studentSubjects[i][1].slice(1).toLowerCase();
+        studentSubjects[i] = studentSubjects[i].join(' ') 
+        
+        
+      }
+    }    
   }
-  
   console.log(studentSubjects)
+  return studentSubjects
+
 }
-/***********************************/
+
 function getAverageMark(){
   let averageMark = [] 
   let sum = 0
@@ -47,10 +60,29 @@ function getAverageMark(){
   }
 }
   sum = Math.round(sum/lengths*100)/100
-
-  console.log(sum)
+  return sum
 }
-/**************************************/
 
-getSubjects()
-getAverageMark()
+function getStudentInfo(){
+  sum = getAverageMark()
+  studentInfo = student
+  studentInfo['averageMark'] = sum
+  delete studentInfo.subjects;
+
+  console.log(studentInfo)
+  return JSON.stringify(studentInfo);
+}
+
+function getStudentName(){
+  const studentsName = students.filter((student) => { 
+    return student.name ;
+  }).map((student) => student.name).sort();  
+  console.log(studentsName)
+  return studentsName
+}
+
+
+document.writeln(`Функція №1: ${getSubjects()} <br>`);
+document.writeln(`Функція №2: ${getAverageMark()} <br>`);
+document.writeln(`Функція №3: ${getStudentInfo()} <br>`);
+document.writeln(`Функція №4: ${getStudentName()} <br>`);
