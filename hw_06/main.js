@@ -23,7 +23,8 @@ const students = [{
     cosmology: [5, 5, 5, 5]
   }
 }];
-const [,student] = students
+
+const [student] = students
 
 
 function getSubjects(){
@@ -36,7 +37,7 @@ function getSubjects(){
       
       if (studentSubjects[i][j]==='_') {
         studentSubjects[i] = studentSubjects[i].split('_')
-        studentSubjects[i][1] = studentSubjects[i][1][0].toUpperCase() + studentSubjects[i][1].slice(1).toLowerCase();
+        //studentSubjects[i][1] = studentSubjects[i][1][0].toUpperCase() + studentSubjects[i][1].slice(1).toLowerCase();
         studentSubjects[i] = studentSubjects[i].join(' ') 
         
         
@@ -44,11 +45,10 @@ function getSubjects(){
     }    
   }
   console.log(studentSubjects)
-  return studentSubjects
 
 }
 
-function getAverageMark(){
+function getAverageMark(student){
   let averageMark = [] 
   let sum = 0
   let lengths = 0
@@ -64,13 +64,11 @@ function getAverageMark(){
 }
 
 function getStudentInfo(){
-  sum = getAverageMark()
-  studentInfo = student
-  studentInfo['averageMark'] = sum
-  delete studentInfo.subjects;
-
-  console.log(studentInfo)
-  return JSON.stringify(studentInfo);
+  return {
+    course: student.course,
+    name: student.name,
+    averageMark: getAverageMark(student)
+  };
 }
 
 function getStudentName(){
@@ -78,11 +76,38 @@ function getStudentName(){
     return student.name ;
   }).map((student) => student.name).sort();  
   console.log(studentsName)
-  return studentsName
+}
+
+function getBestStudent(students) {
+  let bestMark = 0;
+  let studentName = '';
+
+  students.forEach((student) => {
+    const currentMark = getAverageMark(student);
+    if (bestMark < currentMark) {
+      bestMark = currentMark;
+      studentName = student.name;
+    }
+  });
+  console.log(studentName)
 }
 
 
-document.writeln(`Функція №1: ${getSubjects()} <br>`);
-document.writeln(`Функція №2: ${getAverageMark()} <br>`);
-document.writeln(`Функція №3: ${getStudentInfo()} <br>`);
-document.writeln(`Функція №4: ${getStudentName()} <br>`);
+function calculateWordLetters(word) {
+  return word.split('').reduce((accumulator, letter) => {
+    const currentCount = accumulator[letter] || 0;
+
+    return {
+      ...accumulator,
+      [letter]: currentCount + 1
+    };
+  }, {});
+}
+getSubjects()
+console.log(getAverageMark(students[0]))
+
+console.log(getStudentInfo())
+getStudentName()
+getBestStudent(students)
+console.log(calculateWordLetters('тест'))
+
