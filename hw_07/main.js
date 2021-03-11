@@ -15,28 +15,26 @@ function getMiddleTaxes() {
 
 function getTotalTaxes() {
     return this.tax * this.middleSalary * this.vacancies;
-    
-  
-  
 }
+
+
 
 function getMySalary() {
   const min = 1500;
   const max = 2000;
-  setTimeout(()=>{
+  setInterval(()=>{
     mySalary = {}
     mySalary.salary = Math.floor(Math.random()*(max - min) + min);
     mySalary.taxes = Math.floor(this.tax *  mySalary.salary*100)/100;
     mySalary.profit = mySalary.salary - mySalary.taxes
     console.log(mySalary);
-    return getMySalary.call(latvia)
   }, 10000);
   
 }
 
 console.log(`Податок:`,getMyTaxes.call(latvia, 1500));
 
-console.log(`Середній податок:`,getMiddleTaxes.call(ukraine, latvia, litva));
+console.log(`Середній податок:`,getMiddleTaxes.call(ukraine));
 
 console.log(`Загальний податок:`,getTotalTaxes.call(latvia));
 
