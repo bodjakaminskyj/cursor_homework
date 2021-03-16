@@ -1,19 +1,23 @@
 class Student{
-  constructor(university, course, fullName, marks){
+  constructor(university, course, fullName, marks, isDismiss = false){
     this.university = university;
     this.course = course;
     this.fullName = fullName;
     this.marks = marks;
+    this.isDismiss = isDismiss;
   }
   
   get getInfo(){
     return `Студент ${this.course}-го курсу ${this.university} ${this.fullName}`
   }
   get getMarks(){
-    return this.marks
+    if(this.isDismiss === false){
+      return this.marks;
+    }else return null;
+
   }
   set setMarks(mark){
-    if (this.marks !== null) {
+    if (this.isDismiss === false) {
       this.marks.push(mark) 
     }
   }
@@ -30,29 +34,25 @@ class Student{
     else return null;
 }
   dismiss() {
-    this.marks = null;
+    this.isDismiss = true;
+    console.log(`Студента відраховано`)
   }
 
   recover() {
-    this.marks = [];
+    this.isDismiss = false;
+    console.log(`Студента поновлено`)
   }
 }
 class BudgetStudent extends Student{
-  constructor(university, course, fullName, marks){
-    super(university, course, fullName, marks);
+  constructor(university, course, fullName, marks, isDismiss){
+    super(university, course, fullName, marks, isDismiss);
     this.getScholarship = function getScholarship() {
-      if (this.getAverageMark() >= 4) {
+      if (this.getAverageMark() >= 4 && this.isDismiss === false) {
         console.log(`Ви отримали 1400 грн. стипендії`);
       } 
-      else if(this.marks === null){
-        console.log(
-          `Cтудента ${this.fullName} виключено, він не отримує стипендію`
-        );
-      }
-
       else{
         console.log(
-          `Ваша середня оцінка нижче 4.0, ви не можете отримати стипендію`
+          `Студент не отримує степендію`
         );
       }
     
