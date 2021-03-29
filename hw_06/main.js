@@ -24,29 +24,12 @@ const students = [{
   }
 }];
 
-const [student] = students
+const [,student] = students
 
-
-function getSubjects(){
-  let studentSubjects = []
-  studentSubjects = Object.keys(student.subjects);  
-  for (let i = 0; i < studentSubjects.length; i++) {
-    studentSubjects[i] = studentSubjects[i][0].toUpperCase() + studentSubjects[i].slice(1).toLowerCase();
-
-    for (let j = 0; j < studentSubjects[i].length; j++) {
-      
-      if (studentSubjects[i][j]==='_') {
-        studentSubjects[i] = studentSubjects[i].split('_')
-        //studentSubjects[i][1] = studentSubjects[i][1][0].toUpperCase() + studentSubjects[i][1].slice(1).toLowerCase();
-        studentSubjects[i] = studentSubjects[i].join(' ') 
-        
-        
-      }
-    }    
-  }
-  console.log(studentSubjects)
-
-}
+const getSubjects = (student) =>
+Object.keys(student.subjects).map((el) =>
+(el[0].toUpperCase() + el.slice(1)).replace("_", " ")
+);
 
 function getAverageMark(student){
   let averageMark = [] 
@@ -59,8 +42,7 @@ function getAverageMark(student){
       sum += averageMark[i][j]      
   }
 }
-  sum = Math.round(sum/lengths*100)/100
-  return sum
+  return Math.round(sum/lengths*100)/100
 }
 
 function getStudentInfo(){
@@ -103,7 +85,7 @@ function calculateWordLetters(word) {
     };
   }, {});
 }
-getSubjects()
+console.log(getSubjects(student));
 console.log(getAverageMark(students[0]))
 
 console.log(getStudentInfo())

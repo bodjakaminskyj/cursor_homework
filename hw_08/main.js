@@ -17,7 +17,7 @@ class Student{
 
   }
   set setMarks(mark){
-    if (this.isDismiss === false) {
+    if (!this.isDismiss) {
       this.marks.push(mark) 
     }
   }
@@ -47,7 +47,7 @@ class BudgetStudent extends Student{
   constructor(university, course, fullName, marks, isDismiss){
     super(university, course, fullName, marks, isDismiss);
     this.getScholarship = function getScholarship() {
-      if (this.getAverageMark() >= 4 && this.isDismiss === false) {
+      if (this.getAverageMark() >= 4 && !this.isDismiss) {
         console.log(`Ви отримали 1400 грн. стипендії`);
       } 
       else{
