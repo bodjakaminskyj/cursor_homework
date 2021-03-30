@@ -13,7 +13,7 @@ function getPlanets(){
 
 async function getInfo(){
     let a = document.querySelector('#number_episode').value;
-    axios.get(`https://swapi.dev/api/films/${a}`)
+    axios.get(`https://swapi.dev/api/films/2`)
     .then((res)=>{        
         list_characters.innerHTML = `<h1 class="title"> Characters </h1>`;
         for (let i = 0; i < res.data.characters.length; i++) {
