@@ -3,14 +3,19 @@
  <head>
   <meta charset="utf-8" />
   <meta name="viewport">
-  
+  <link rel="stylesheet" type="text/css" href="style.css" />
   <title>HW</title>
  </head>
  <body>
-     <input type="button" id="get_info" value="Отримати інформацію" >
-     <input id="number_episode" value="2">
-     <ul>
-     </ul>
+    <button id="get_info" class="gradient-button" >Актори</button></a>
+     <button id="get_planet" class="gradient-button" >Планети</button><br>
+     <h3 class="num_episode">Введіть номер епізоду</h3>
+     <input id="number_episode" type="number" value="2" min="1" max="6">
+     
+     <div class="list_characters" >
+     </div>
+     <div class="list_planets"></div>
+    
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="./main.js"></script>
     </body>
