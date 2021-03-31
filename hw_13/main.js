@@ -14,8 +14,7 @@ function getInfo(){
     let n = document.querySelector('#number_episode').value;
     axios.get(`https://swapi.dev/api/films/${n}/`)
     .then((result)=>{  
-        const actors = result.data.characters;
-        console.log(actors);      
+        const actors = result.data.characters;     
         list.innerHTML = `<h1 class="title"> Characters </h1>`;
         for (let i = 0; i < actors.length; i++) {
             axios.get(`https${actors[i].substring(4)}`).then((res)=>{
