@@ -10,7 +10,7 @@ function getPlanets(){
 
 }
 
-async function getInfo(){
+function getInfo(){
     let n = document.querySelector('#number_episode').value;
     axios.get(`https://swapi.dev/api/films/${n}`)
     .then((result)=>{  
@@ -38,7 +38,7 @@ async function getInfo(){
         }
     })
 }
-async function getPagePlanets(number){
+function getPagePlanets(number){
     axios.get(`https://swapi.dev/api/planets/?page=${number}`)
     .then((res)=>{
         list.innerHTML = `<h1 class="title"> Planets </h1>`;
