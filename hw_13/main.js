@@ -1,5 +1,4 @@
-const list_characters = document.querySelector('.list_characters');
-const list_planets = document.querySelector('.list_planets');
+const list = document.querySelector('.list');
 const info = document.querySelector('#get_info');
 const planets = document.querySelector('#get_planet');
 let page = 1;
@@ -14,10 +13,12 @@ function getPlanets(){
 async function getInfo(){
     let a = document.querySelector('#number_episode').value;
     axios.get(`https://swapi.dev/api/films/2`)
-    .then((res)=>{        
-        list_characters.innerHTML = `<h1 class="title"> Characters </h1>`;
-        for (let i = 0; i < res.data.characters.length; i++) {
-            axios.get(res.data.characters[i]).then((res)=>{
+    .then((res)=>{  
+        const actors = res.data.characters;
+        console.log(actors);      
+        list.innerHTML = `<h1 class="title"> Characters </h1>`;
+        for (let i = 0; i < actors.length; i++) {
+            axios.get(actors[i]).then((res)=>{
                 const character = document.createElement('div');
                 character.className = "character";
                 const img = new Image(25, 25);
@@ -31,7 +32,7 @@ async function getInfo(){
                 Birth_year: ${res.data.birth_year};<br>
                 `
                 character.appendChild(img);
-                list_characters.appendChild(character); 
+                list.appendChild(character); 
                             
             })    
         }
@@ -40,7 +41,7 @@ async function getInfo(){
 async function getPagePlanets(number){
     axios.get(`https://swapi.dev/api/planets/?page=${number}`)
     .then((res)=>{
-        list_planets.innerHTML = `<h1 class="title"> Planets </h1>`;
+        list.innerHTML = `<h1 class="title"> Planets </h1>`;
         for (let i = 0; i < res.data.results.length; i++) {
             const planet = document.createElement('div')
             planet.className = "planet"
@@ -50,7 +51,7 @@ async function getPagePlanets(number){
                 Diameter: ${res.data.results[i].diameter}.
                 `;
                 
-        list_planets.appendChild(planet);
+        list.appendChild(planet);
         }
         const next = document.createElement('input');
         const back = document.createElement('input');
@@ -65,9 +66,9 @@ async function getPagePlanets(number){
         back.setAttribute("type", "button");
         back.setAttribute("value", "back");
         
-
-        list_planets.appendChild(next);
-        list_planets.appendChild(back);
+        list.appendChild(back);
+        list.appendChild(next);
+        
         next.addEventListener("click", function(){
             page++;
             if(page===7)page=1

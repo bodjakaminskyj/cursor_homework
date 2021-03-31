@@ -7,7 +7,7 @@
 .character img{
     padding: 10px;
 }
-.list_characters, .list_planets{
+.list{
     max-width: 1120px;
     margin: 0 auto;
     display: flex;
