@@ -11,10 +11,10 @@ function getPlanets(){
 }
 
 async function getInfo(){
-    let a = document.querySelector('#number_episode').value;
-    axios.get(`https://swapi.dev/api/films/2`)
-    .then((res)=>{  
-        const actors = res.data.characters;
+    let n = document.querySelector('#number_episode').value;
+    axios.get(`https://swapi.dev/api/films/${n}`)
+    .then((result)=>{  
+        const actors = result.data.characters;
         console.log(actors);      
         list.innerHTML = `<h1 class="title"> Characters </h1>`;
         for (let i = 0; i < actors.length; i++) {
