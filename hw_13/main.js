@@ -18,7 +18,7 @@ async function getInfo(){
         console.log(actors);      
         list.innerHTML = `<h1 class="title"> Characters </h1>`;
         for (let i = 0; i < actors.length; i++) {
-            axios.get(actors[i]).then((res)=>{
+            axios.get(`https${actors[i].substring(4)}`).then((res)=>{
                 const character = document.createElement('div');
                 character.className = "character";
                 const img = new Image(25, 25);
