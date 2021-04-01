@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8" />
+  <meta name="viewport">
+  <link rel="stylesheet" type="text/css" href="style.css" />
+   <title>HW</title>
+ </head>
+ <body>
+     <p>
+        <h1>Завдання 2 (advanced)</h1>
+        Створіть генератор, який буде регулювати розміри шрифту для вашого сайту. (Можна допрацювати, щоб реально змінював шрифт, але це не є обов'язковою умовою)
+        Працювати генератор буде наступним чином:
+        <ul>
+        <li>const fontGenerator = newFontGenerator(14); // 14 – стартове значення</li>
+        <li>fontGenerator.next("up").value -> 14</li>
+        <li>fontGenerator.next("up").value -> 16</li>
+        <li>fontGenerator.next("up").value -> 18</li>
+        <li>fontGenerator.next().value -> 18</li>
+        <li>fontGenerator.next("down").value -> 16</li>
+        <li>fontGenerator.next("down").value -> 14</li>
+        <li>fontGenerator.next("down").value -> 12</li>
+        <li>fontGenerator.next().value -> 12</li>
+    </ul>
+    </p>
+    <button id="generator" class="pressed-button" >Generator</button>
+    <button id="up" class="pressed-button" >+</button>
+    <button id="down" class="pressed-button" >-</button>
+    <script src="./main.js"></script>
+    </body>
+</html>
